@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 final pages = [
   new PageViewModel( 
-     Colors.yellow,
-     'assets/images.jpeg',
+     Colors.orange,
+     'assets/balloon.png',
      'Minion',
      'I Am Awesome',
      'assets/mini.png',
@@ -21,7 +21,8 @@ PageViewModel(
      'Cutie Minion',
      'I am Yo Yo Girl',
      'assets/balloon.png',
-     )
+     ),
+
 ];
 
 class Page extends StatelessWidget{

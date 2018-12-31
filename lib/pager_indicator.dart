@@ -43,10 +43,25 @@ class PagerIndicator extends StatelessWidget
         ),
       );
     }
+    final  BUBBLEWIDTH =  55.0;
+    final baseTranslation = ((viewModel.pages.length * BUBBLEWIDTH) / 2) - (BUBBLEWIDTH / 2);
+    var translation = baseTranslation - (viewModel.activeIndex * BUBBLEWIDTH);
+      if(viewModel.slideDirection == SlideDirection.leftToRight){
+        translation += BUBBLEWIDTH * viewModel.slidepercent;
+
+      }else if(viewModel.slideDirection == SlideDirection.rightToLeft)
+      {
+        translation -= BUBBLEWIDTH * viewModel.slidepercent;
+
+      }
+
     return new Column(
           
           children: [
             Expanded(child: Container()),
+            Transform(
+              transform:Matrix4.translationValues(-50.0,0.0,0.0),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               
@@ -89,8 +104,10 @@ class PageBubble extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-                  padding:const EdgeInsets.all(10.0),
+    return Container(
+                  width: 55.0,
+                  height: 65.0,
+                  child: Center(
                   child:   Container(
                    
         
@@ -116,7 +133,8 @@ class PageBubble extends StatelessWidget{
                   viewModel.iconAssetPath,
                 )
                 ),
-                );
+                ),
+    );
   }
 }
 class PagerBubbleViewModel{
